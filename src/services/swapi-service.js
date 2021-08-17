@@ -1,6 +1,6 @@
 // класс-клиент для SWAPI
 // инкапсуляция всего сетевого кода
-class SwapiService {
+export default class SwapiService {
 
   _apiBase = 'https://swapi.dev/api';
 

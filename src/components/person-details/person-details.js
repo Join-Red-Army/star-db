@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+
 import './person-details.css';
 
 export default class PersonDetails extends Component {
@@ -27,6 +28,6 @@ export default class PersonDetails extends Component {
           </ul>
         </div>
       </div>
-    );
-  };
-};
+    )
+  }
+}
