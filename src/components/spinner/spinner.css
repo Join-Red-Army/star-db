@@ -16,9 +16,10 @@
   }
 }
 
-.spinner-container {
-  margin: 0 auto;
-}
+/* .spinner-container {
+  display: flex;
+  justify-content: center;
+} */
 
 .ldio-hjo3s6hfd9c div {
   position: absolute;
