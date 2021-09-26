@@ -52,7 +52,7 @@ export default class SwapiService {
 
   // странсформация данных, которые получены от API
   // вместо всех полей сохраняются только нужные
-  _transformPlanet(planet) {
+  _transformPlanet = (planet) => {
     return {
       id: this._extractId(planet),
       name: planet.name,
@@ -62,7 +62,7 @@ export default class SwapiService {
     };
   };
 
-  _transformStarship(starship) {
+  _transformStarship = (starship) => {
     return {
       id: this._extractId(starship),
       name: starship.name,
@@ -76,7 +76,7 @@ export default class SwapiService {
     };
   };
 
-  _transformPerson(person) {
+  _transformPerson = (person) => {
     return {
       id: this._extractId(person),
       name: person.name,
