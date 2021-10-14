@@ -4,7 +4,7 @@ import Spinner from '../spinner';
 import ErrorButton from "../error-button/error-button";
 import './item-details.css';
 
-export default class PersonDetails extends Component {
+export default class ItemDetails extends Component {
 
   swapiService = new SwapiService();
 
@@ -17,19 +17,19 @@ export default class PersonDetails extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.personId !== prevProps.personId) {
+    if (this.props.itemId !== prevProps.itemId) {
       this.updatePerson();
     }
   }
 
   updatePerson() {
-    const { personId } = this.props;
-    if (!personId) {
+    const { itemId } = this.props;
+    if (!itemId) {
       return;
     }
 
     this.swapiService
-      .getPerson(personId)
+      .getPerson(itemId)
       .then((person) => {
         this.setState({ person });
       });

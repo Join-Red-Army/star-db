@@ -9,6 +9,8 @@ import './app.css';
 import ErrorIndicator from '../error-indicator';
 import PeoplePage from '../people-page';
 import SwapiService from '../../services/swapi-service';
+import ErrorBoundry from '../error-boundry';
+import Row from '../row';
 
 export default class App extends Component {
 
@@ -41,21 +43,35 @@ export default class App extends Component {
       <RandomPlanet/> :
       null;
 
+    const personDetails = (
+      <ItemDetails itemId={11} />
+    );
+
+    const starshipDetails = (
+      <ItemDetails itemId={5} />
+    )
+
     return (
-      <div className="stardb-app">
-        <Header />
-        { planet }
+      <ErrorBoundry>
+        <div className="stardb-app">
+          <Header />
 
-        <div className="row mb2 button-row">
-          <button
-            className="toggle-planet btn btn-warning btn-lg"
-            onClick={this.toggleRandomPlanet}>
-            Toggle Random Planet
-          </button>
-          <ErrorButton />
-        </div>
+          <Row
+            left={personDetails}
+            right={starshipDetails}/>
 
-        <PeoplePage />
+          {/* { planet }
+
+          <div className="row mb2 button-row">
+            <button
+              className="toggle-planet btn btn-warning btn-lg"
+              onClick={this.toggleRandomPlanet}>
+              Toggle Random Planet
+            </button>
+            <ErrorButton />
+          </div> */}
+
+          {/* <PeoplePage /> */}
 
       {/* <div className="row mb2">
         <div className="col-md-6">
@@ -68,9 +84,12 @@ export default class App extends Component {
           <ItemDetails personId={this.state.selectedPerson} />
         </div>
       </div> */}
-        
-        
-      </div>
+
+          </div>  
+        </ErrorBoundry>
+
+
+
     );
   }
 }
