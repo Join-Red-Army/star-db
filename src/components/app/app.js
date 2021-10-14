@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Header from '../header';
 import RandomPlanet from '../random-planet';
 import ItemList from '../item-list';
-import PersonDetails from '../person-details';
+import ItemDetails from '../item-details';
 import ErrorButton from '../error-button';
 import './app.css';
 import ErrorIndicator from '../error-indicator';
@@ -57,7 +57,7 @@ export default class App extends Component {
 
         <PeoplePage />
 
-      <div className="row mb2">
+      {/* <div className="row mb2">
         <div className="col-md-6">
           <ItemList 
             onItemSelected={this.onPersonSelected} 
@@ -65,21 +65,9 @@ export default class App extends Component {
             renderItem={(item) => (<span>{item.name} <button>!</button> </span>)} />
         </div>
         <div className="col-md-6">
-          <PersonDetails personId={this.state.selectedPerson} />
+          <ItemDetails personId={this.state.selectedPerson} />
         </div>
-      </div>
-
-      <div className="row mb2">
-        <div className="col-md-6">
-          <ItemList 
-            onItemSelected={this.onPersonSelected} 
-            getData={this.swapiService.getAllStarships}
-            renderItem={(item) => item.name} />
-        </div>
-        <div className="col-md-6">
-          <PersonDetails personId={this.state.selectedPerson} />
-        </div>
-      </div>
+      </div> */}
         
         
       </div>
