@@ -43,13 +43,22 @@ export default class App extends Component {
       <RandomPlanet/> :
       null;
 
+
+      // 04^10
+
+    const {getPerson, getStarship} = this.swapiService;
+
     const personDetails = (
-      <ItemDetails itemId={11} />
+      <ItemDetails 
+        itemId={11} 
+        getData={getPerson} />
     );
 
     const starshipDetails = (
-      <ItemDetails itemId={5} />
-    )
+      <ItemDetails 
+        itemId={5}
+        getData={getStarship} />
+    );
 
     return (
       <ErrorBoundry>
