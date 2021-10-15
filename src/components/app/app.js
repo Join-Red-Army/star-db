@@ -44,20 +44,19 @@ export default class App extends Component {
       null;
 
 
-      // 04^10
-
-    const {getPerson, getStarship} = this.swapiService;
-
+    const {getPerson, getStarship,
+          getPersonImage, getStarshipImage} = this.swapiService;
     const personDetails = (
       <ItemDetails 
         itemId={11} 
-        getData={getPerson} />
+        getData={getPerson}
+        getImageUrl={getPersonImage} />
     );
-
     const starshipDetails = (
       <ItemDetails 
         itemId={5}
-        getData={getStarship} />
+        getData={getStarship}
+        getImageUrl={getStarshipImage} />
     );
 
     return (
@@ -96,8 +95,6 @@ export default class App extends Component {
 
           </div>  
         </ErrorBoundry>
-
-
 
     );
   }
