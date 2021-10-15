@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+
 import SwapiService from '../../services/swapi-service';
-import Spinner from '../spinner';
 import ErrorButton from "../error-button/error-button";
+
 import './item-details.css';
 
 export default class ItemDetails extends Component {
@@ -35,17 +36,19 @@ export default class ItemDetails extends Component {
   }
 
   render() {
-    if (!this.state.item) {
+
+    const { item } = this.state;
+    if (!item) {
       return <span>Select a person from list</span>;
     }
 
-    const {id, name, gender, birthYear, eyeColor} = this.state.item;
+    const {id, name, gender, birthYear, eyeColor} = item;
 
     return (
       <div className="item-details card">
         <img className="person-image"
           src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} 
-          alt="character"/>
+          alt="item"/>
 
         <div className="card-body">
           <h4>{name}</h4>
