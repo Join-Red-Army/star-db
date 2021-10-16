@@ -19,22 +19,24 @@ Consumer – используется для получения данных. Д
 // Создание файла-компонента для контекста
 React.createContext();
 // Значение по умолчанию, если consumer не сможет найти никакой контекст.
-// Возвращает пару: Provider и Consumer.
 
+// в модуле
+const { Provider, Consumer } = React.createContext();
 const {
   Provider: SwapiServiceProvider, 
   Consumer: SwapiServiceConsumer 
 } = React.createContext();
 
-// Использование
-//Provider ипортируется в вышестроящий компонент (app.js) и оборачивает нижестоящие компоненты, получает value={}, который надо в них протащить.
+// в родительском файле
+<Provider value={someValue}>
+  // провайдер оборачивает часть приложения
+</Provider>
 
-<SwapiServiceProvider value = {this.swapiService}>
-  <el>
-    <el>
-    <details>
-  <el>
-</SwapiServiceProvider>
+// в файле-потомке любой вложенности
+<Consumer>
+  { (someValue) => <MyComponentData={someValue} /> }
+</Consomer>
+
 ```
 
 
@@ -112,4 +114,18 @@ const hoc = (Wrapper) => {
 }
 
 const MyWrappedComponent = hoc(InnerComponent);
+```
+
+### HOC-context
+Обязанность получать данные из контекста можно вынести в компонент высшего порядка.
+```JS
+const withValueFromContext = (Wrapped) => {
+  return (
+
+    <Consumer>
+      { (value) => <Wrapped value={value} /> }
+    </Consumer>
+
+  );
+};
 ```
