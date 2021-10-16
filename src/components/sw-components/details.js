@@ -1,8 +1,58 @@
 // для описания персонажей, кораблей и планет
+import React from "react";
+import ItemDetails, { Record } from "../item-details/item-details";
+import SwapiService from "../../services/swapi-service";
 
-const PersonDetails = () => {};
-const PlanetDetails = () => {};
-const StarshipDetails = () => {};
+const swapiService = new SwapiService();
+
+const {
+  getPerson,
+  getPlanet,
+  getStarship,
+  getPersonImage,
+  getPlanetImage,
+  getStarshipImage
+} = swapiService;
+
+
+const PersonDetails = ({itemId}) => {
+  return (
+    <ItemDetails 
+    itemId={itemId} 
+    getData={getPerson}
+    getImageUrl={getPersonImage}>
+      <Record field="population" label="Gender" /> 
+      <Record field="rotationPerion" label="Rotation Period" /> 
+      <Record field="diameter" label="Diameter" /> 
+    </ItemDetails>
+  );
+};
+
+const PlanetDetails = ({itemId}) => {
+  return (
+    <ItemDetails 
+    itemId={itemId} 
+    getData={getPlanet}
+    getImageUrl={getPlanetImage}>
+      <Record field="gender" label="Gender" /> 
+      <Record field="eyeColor" label="Eye Color" /> 
+    </ItemDetails>
+  );
+};
+
+const StarshipDetails = ({itemId}) => {
+  return (
+    <ItemDetails 
+      itemId={itemId}
+      getData={getStarship}
+      getImageUrl={getStarshipImage}>
+    <Record field="model" label="Model" /> 
+    <Record field="length" label="Length" /> 
+    <Record field="costInCredits" label="Cost" /> 
+  </ItemDetails>
+  );
+};
+
 
 export {
   PersonDetails,

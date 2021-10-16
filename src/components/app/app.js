@@ -56,31 +56,35 @@ export default class App extends Component {
     const {getPerson, getStarship,
           getPersonImage, getStarshipImage} = this.swapiService;
     
-    const personDetails = (
-      <ItemDetails 
-        itemId={11} 
-        getData={getPerson}
-        getImageUrl={getPersonImage}>
-          <Record field="gender" label="Gender" /> 
-          <Record field="eyeColor" label="Eye Color" /> 
-      </ItemDetails>
-    );
+    // const personDetails = (
+    //   <ItemDetails 
+    //     itemId={11} 
+    //     getData={getPerson}
+    //     getImageUrl={getPersonImage}>
+    //       <Record field="gender" label="Gender" /> 
+    //       <Record field="eyeColor" label="Eye Color" /> 
+    //   </ItemDetails>
+    // );
 
-    const starshipDetails = (
-      <ItemDetails 
-        itemId={5}
-        getData={getStarship}
-        getImageUrl={getStarshipImage}>
-          <Record field="model" label="Model" /> 
-          <Record field="length" label="Length" /> 
-          <Record field="costInCredits" label="Cost" /> 
-      </ItemDetails>
-    );
+    // const starshipDetails = (
+    //   <ItemDetails 
+    //     itemId={5}
+    //     getData={getStarship}
+    //     getImageUrl={getStarshipImage}>
+    //       <Record field="model" label="Model" /> 
+    //       <Record field="length" label="Length" /> 
+    //       <Record field="costInCredits" label="Cost" /> 
+    //   </ItemDetails>
+    // );
 
     return (
       <ErrorBoundry>
         <div className="stardb-app">
           <Header />
+
+          <PersonDetails itemId={11} />
+          <StarshipDetails itemId={5} />
+          <PlanetDetails itemId={9} />
 
           <PersonList>
             { ({name}) => <span>{name}</span> }
@@ -89,7 +93,7 @@ export default class App extends Component {
           <StarshipList>
             { ({name}) => <span>{name}</span> }
           </StarshipList>
-          
+
           <PlanetList>
             { ({name}) => <span>{name}</span> }
           </PlanetList>
