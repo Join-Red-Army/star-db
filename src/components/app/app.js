@@ -86,6 +86,14 @@ export default class App extends Component {
             { ({name}) => <span>{name}</span> }
           </PersonList>
 
+          <StarshipList>
+            { ({name}) => <span>{name}</span> }
+          </StarshipList>
+          
+          <PlanetList>
+            { ({name}) => <span>{name}</span> }
+          </PlanetList>
+
           {/* <Row
             left={personDetails}
             right={starshipDetails}/> */}
