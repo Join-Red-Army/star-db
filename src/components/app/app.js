@@ -9,6 +9,17 @@ import ErrorIndicator from '../error-indicator';
 import SwapiService from '../../services/swapi-service';
 import ErrorBoundry from '../error-boundry';
 import Row from '../row';
+// import { PersonList } from '../sw-components';
+
+import {
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails,
+
+  PersonList,
+  PlanetList,
+  StarshipList
+} from '../sw-components';
 
 export default class App extends Component {
 
@@ -71,9 +82,13 @@ export default class App extends Component {
         <div className="stardb-app">
           <Header />
 
-          <Row
+          <PersonList>
+            { ({name}) => <span>{name}</span> }
+          </PersonList>
+
+          {/* <Row
             left={personDetails}
-            right={starshipDetails}/>
+            right={starshipDetails}/> */}
 
           {/* { planet }
 
