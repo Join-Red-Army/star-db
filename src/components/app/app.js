@@ -11,6 +11,9 @@ import ErrorBoundry from '../error-boundry';
 import Row from '../row';
 // import { PersonList } from '../sw-components';
 
+import { SwapiServiceProvider } from '../swapi-service-context';
+
+
 import {
   PersonDetails,
   PlanetDetails,
@@ -79,48 +82,50 @@ export default class App extends Component {
 
     return (
       <ErrorBoundry>
-        <div className="stardb-app">
-          <Header />
+        <SwapiServiceProvider value={this.swapiService} >
+          <div className="stardb-app">
+            <Header />
 
-          <PersonDetails itemId={11} />
-          <StarshipDetails itemId={5} />
-          <PlanetDetails itemId={9} />
+            <PersonDetails itemId={11} />
+            <StarshipDetails itemId={5} />
+            <PlanetDetails itemId={9} />
 
-          <PersonList />
-          <StarshipList />
-          <PlanetList />
+            <PersonList />
+            <StarshipList />
+            <PlanetList />
 
-          {/* <Row
-            left={personDetails}
-            right={starshipDetails}/> */}
+            {/* <Row
+              left={personDetails}
+              right={starshipDetails}/> */}
 
-          {/* { planet }
+            {/* { planet }
 
-          <div className="row mb2 button-row">
-            <button
-              className="toggle-planet btn btn-warning btn-lg"
-              onClick={this.toggleRandomPlanet}>
-              Toggle Random Planet
-            </button>
-            <ErrorButton />
+            <div className="row mb2 button-row">
+              <button
+                className="toggle-planet btn btn-warning btn-lg"
+                onClick={this.toggleRandomPlanet}>
+                Toggle Random Planet
+              </button>
+              <ErrorButton />
+            </div> */}
+
+            {/* <PeoplePage /> */}
+
+          {/* <div className="row mb2">
+            <div className="col-md-6">
+              <ItemList 
+                onItemSelected={this.onPersonSelected} 
+                getData={this.swapiService.getAllPlanets}
+                renderItem={(item) => (<span>{item.name} <button>!</button> </span>)} />
+            </div>
+            <div className="col-md-6">
+              <ItemDetails personId={this.state.selectedPerson} />
+            </div>
           </div> */}
 
-          {/* <PeoplePage /> */}
-
-      {/* <div className="row mb2">
-        <div className="col-md-6">
-          <ItemList 
-            onItemSelected={this.onPersonSelected} 
-            getData={this.swapiService.getAllPlanets}
-            renderItem={(item) => (<span>{item.name} <button>!</button> </span>)} />
-        </div>
-        <div className="col-md-6">
-          <ItemDetails personId={this.state.selectedPerson} />
-        </div>
-      </div> */}
-
-          </div>  
-        </ErrorBoundry>
+          </div>
+        </SwapiServiceProvider>
+      </ErrorBoundry>
 
     );
   }
