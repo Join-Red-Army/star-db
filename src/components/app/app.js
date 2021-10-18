@@ -10,9 +10,8 @@ import SwapiService from '../../services/swapi-service';
 import ErrorBoundry from '../error-boundry';
 import Row from '../row';
 // import { PersonList } from '../sw-components';
-
+import DummySwapiService from '../../services/dummy-swapi-service';
 import { SwapiServiceProvider } from '../swapi-service-context';
-
 
 import {
   PersonDetails,
@@ -26,13 +25,25 @@ import {
 
 export default class App extends Component {
 
-  swapiService = new SwapiService();
 
   state = {
     showRandomPlanet: true,
+    swapiService: new DummySwapiService(),
     hasError: false
   };
 
+  onServiceChange = () => {
+    this.setState(({ swapiService }) => {
+
+      const Service = swapiService instanceof SwapiService ?
+        DummySwapiService : SwapiService;
+
+      return {
+        swapiService: new Service()
+      };
+    });
+  };
+  
   toggleRandomPlanet = () => {
     this.setState((state) => {
       return {
@@ -56,8 +67,11 @@ export default class App extends Component {
       null;
 
 
-    const {getPerson, getStarship,
-          getPersonImage, getStarshipImage} = this.swapiService;
+    const {
+      getPerson,
+      getStarship,
+      getPersonImage, 
+      getStarshipImage } = this.state.swapiService;
     
     // const personDetails = (
     //   <ItemDetails 
@@ -82,9 +96,9 @@ export default class App extends Component {
 
     return (
       <ErrorBoundry>
-        <SwapiServiceProvider value={this.swapiService} >
+        <SwapiServiceProvider value={this.state.swapiService} >
           <div className="stardb-app">
-            <Header />
+            <Header  onServiceChange={this.onServiceChange}/>
 
             <PersonDetails itemId={11} />
             <StarshipDetails itemId={5} />
@@ -115,7 +129,7 @@ export default class App extends Component {
             <div className="col-md-6">
               <ItemList 
                 onItemSelected={this.onPersonSelected} 
-                getData={this.swapiService.getAllPlanets}
+                getData={this.state.swapiService.getAllPlanets}
                 renderItem={(item) => (<span>{item.name} <button>!</button> </span>)} />
             </div>
             <div className="col-md-6">
